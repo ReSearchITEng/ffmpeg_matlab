@@ -20,3 +20,19 @@ TODO:
 HOW TO TEST Results:
 Run ffmpeg with RAW file as input (WAV without first 44 bytes of header). The result should be identical to what this app returns.
 ./ffmpeg.exe -loglevel debug -y -vn -f s16le -ac 1 -ar 16000 -acodec pcm_s16le -sample_fmt s16 -i a1_16khz.raw -ac 1 -ab 23850 -ar 16000 -f amr -acodec libvo_amrwbenc -sample_fmt s16 -aframes 150 a1_aframes150.awb
+
+HOW TO COMPILE:
+1. Download: mingw-builds-install.exe from: http://sourceforge.net/projects/mingwbuilds/files/mingw-builds-install/
+2. Using it, install: x64-4.8.1-win32-seh-rev5
+  (It will take automatically from: http://qt-project.org/wiki/MinGW-64-bit ; http://mingw-w64.sourceforge.net/download.php)
+3. Download gnumex: http://sourceforge.net/projects/gnumex/files/ and set it up by pointing it to the mingw location.
+4. Download latest ffmpeg 64 bit hearder files, libs, dlls and optionally executables files from: ffmpeg site.  For windows download them from: http://ffmpeg.zeranoe.com/builds/.
+   You will need to download 2 archives: 
+   4.1 dev archive for the header files and libs. E.g. ffmpeg-<...>-win64-dev.7z . This is req. in order to compile.
+   4.2 binaries for dlls and exe. E.g.  ffmpeg-<...>-win64-shared.7z . These are req. in order to run the application (Unless you want to compile your mex file static, when you will not need them).
+5. Optionally: install cygwin for a great number of Linux tools compiled for windows, from: http://cygwin.com/install.html
+6. Clear understanding of what you want to achieve and how things are connected to eachother.
+7. Once everything is set up, compile from matlab the .c file(s) .
+8. As an IDE, one may use Code::Blocks for developing the c file, and once done, add the mex.h and other matlab related sections and compile it in matlab afterwards.
+
+Good luck!
