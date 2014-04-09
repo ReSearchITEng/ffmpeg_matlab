@@ -18,8 +18,18 @@ TODO:
 -> find solution for VBR codecs to allocate mem properly.
 
 HOW TO TEST Results:
-Run ffmpeg with RAW file as input (WAV without first 44 bytes of header). The result should be identical to what this app returns.
-./ffmpeg.exe -loglevel debug -y -vn -f s16le -ac 1 -ar 16000 -acodec pcm_s16le -sample_fmt s16 -i a1_16khz.raw -ac 1 -ab 23850 -ar 16000 -f amr -acodec libvo_amrwbenc -sample_fmt s16 -aframes 150 a1_aframes150.awb
+Run ffmpeg with RAW (.sw) file as input (WAV without first 44 bytes of header). The result should be identical to what this app returns.
+./ffmpeg.exe -loglevel debug -y -vn -f s16le -ac 1 -ar 16000 -acodec pcm_s16le -sample_fmt s16 -i a1_16khz.sw -ac 1 -ab 23850 -ar 16000 -f amr -acodec libvo_amrwbenc -sample_fmt s16 -aframes 150 a1_aframes150.awb
+
+HOW TO USE:
+set input&output data from matlab and run the ffmpeg_matlab(parameters).
+
+HOW TO Get ffmpeg info:
+->Codec name can be found by ./ffmpeg.exe -codecs | grep -i amr  (for example)
+->Codec's accepted sample format can be found by ./ffmpeg.exe -h encoder=amr_wb  (for example), or -h decoder=amr_wb, etc.
+->all possibe sample formats: ./ffmpeg.exe -sample_fmts
+->./ffmpeg.exe  -formats            show available formats
+->./ffmpeg.exe -h full | grep -i <keyword for what you want to know>
 
 HOW TO COMPILE:
 1. Download: mingw-builds-install.exe from: http://sourceforge.net/projects/mingwbuilds/files/mingw-builds-install/
