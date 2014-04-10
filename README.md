@@ -22,8 +22,8 @@ Run ffmpeg with RAW (.sw) file as input (WAV without first 44 bytes of header). 
 ./ffmpeg.exe -loglevel debug -y -vn -f s16le -ac 1 -ar 16000 -acodec pcm_s16le -sample_fmt s16 -i a1_16khz.sw -ac 1 -ab 23850 -ar 16000 -f amr -acodec libvo_amrwbenc -sample_fmt s16 -aframes 150 a1_aframes150.awb
 
 To view/check the wav signals, use the: http://audacity.sourceforge.net/
-As ffmpeg's resampling is not the best, you may want to use: http://shibatch.sourceforge.net/  (as suggested by http://transcoding.wordpress.com/2011/11/16/careful-with-audio-resampling-using-ffmpeg/)
-Other great audio tool: http://sox.sourceforge.net/ 
+As ffmpeg's resampling is not the best, you may want to use: http://sox.sourceforge.net/  or http://shibatch.sourceforge.net/  (as suggested by http://transcoding.wordpress.com/2011/11/16/careful-with-audio-resampling-using-ffmpeg/)
+Sox is great audio tool by itself, with lots of other functionalities.
 
 HOW TO USE:
 set input&output data from matlab and run the ffmpeg_matlab(parameters).
